@@ -2,8 +2,9 @@
 	
 	import { fade } from 'svelte/transition';
     import { onMount, onDestroy} from 'svelte';
-	import SurahNameCard from './SurahNameCard.svelte';
+	import SurahVersesCard from './SurahVersesCard.svelte';
     export let data;
+    console.log(data.verses);
     $:show = false;
 
     onMount(()=> {
@@ -19,12 +20,12 @@
 <section>
     
     {#if show}
-        {#if data.surahs}
+        {#if data.verses}
             <div class="grid-container" >
-                {#each data.surahs as sura,i (sura.id)}
+                {#each data.verses as verse,i (verse.id)}
                 <!-- transition:fade={{delay: i * 150}} -->
                 <div >
-                    <SurahNameCard sura={sura}/>
+                    <SurahVersesCard verses={verse}/>
                 </div>
                 {/each}
             </div>
@@ -33,18 +34,10 @@
 </section>
 
 <style>
-    @media screen and  (max-width: 800px){
-        .grid-container {
-            grid-template-columns: auto auto!important;;
-        }
-    }
-    @media screen and  (max-width: 600px){
-        .grid-container {
-            grid-template-columns: auto!important;;
-        }
-    }
+    
     .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: auto;
+        margin: 0 30px;
     }
 </style>
