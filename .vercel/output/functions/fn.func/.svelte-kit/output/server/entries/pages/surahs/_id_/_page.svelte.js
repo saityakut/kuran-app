@@ -38,7 +38,8 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$result.css.add(css);
   show = false;
   return `<section>${show ? `${data.verses ? `<div class="grid-container svelte-1vnxwsl">${each(data.verses, (verse, i) => {
-    return `<div>${validate_component(SurahVersesCard, "SurahVersesCard").$$render($$result, { verses: verse }, {}, {})}
+    return `
+                <div>${validate_component(SurahVersesCard, "SurahVersesCard").$$render($$result, { verses: verse }, {}, {})}
                 </div>`;
   })}</div>` : ``}` : ``}
 </section>`;
